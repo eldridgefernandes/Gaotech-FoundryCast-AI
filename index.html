@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI and IoT Solutions for Foundries & Casting | FoundryCast AI</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #dd6b20;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+            --dark-bg: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-contact {
+            background-color: var(--accent-color);
+            color: #ffffff !important;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+            color: #ffffff;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            max-width: 900px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin: 25px 0 15px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Custom Lists */
+        ul.bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 25px;
+            background: var(--card-bg);
+            padding: 10px 10px 10px 30px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        ul.bullet-list li::before {
+            content: "►";
+            position: absolute;
+            left: 10px;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        /* Table & Diagram Mockups */
+        .diagram-container {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .diagram-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .diagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .diagram-col {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .diagram-col-header {
+            background: var(--primary-color);
+            color: #ffffff;
+            padding: 8px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .diagram-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .step-card {
+            background: #edf2f7;
+            border-left: 4px solid var(--secondary-color);
+            padding: 10px;
+            font-size: 0.85rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .step-card span {
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #cbd5e1;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 8px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+        }
+
+        .map-block {
+            background: #1e293b;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid #334155;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            ul.bullet-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Navigation Container -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">FoundryCast <span>AI</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#applications">Applications</a></li>
+                    <li><a href="#knowledge">Knowledge Center</a></li>
+                    <li><a href="#contact" class="btn-contact">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero / Main Header Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>AI and IoT Solutions for Foundries & Casting | FoundryCast AI</h1>
+            <p>FoundryCast AI delivers AI and IoT software for foundries and casting operations with RFID workforce 
+                identification, furnace access control, mold and tooling tracking, alloy and scrap inventory management, 
+                casting work-in-progress visibility, heat lot traceability, BLE, LoRaWAN, GPS yard tracking, edge computing, 
+                and MES/ERP integration.</p>
+            <a href="#contact" class="btn-contact" style="display:inline-block; margin-top:10px;">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="about">
+        <div class="container">
+            <h2>AI and IoT Workforce Identification, Asset Tracking, and Heat Lot Traceability for Foundries & 
+                Casting Operations</h2>
+            <p>Foundries represent one of the most demanding manufacturing environments within the Primary Metals
+                 Industry. Every production cycle involves continuous movement of raw materials, charge materials, molds, 
+                 flasks, core boxes, ladles, crucibles, production tooling, work-in-progress castings, finished components, 
+                 forklifts, and personnel across multiple manufacturing areas. Maintaining accurate identification 
+                 throughout these operations is essential for production efficiency, workforce safety, product quality,
+                  regulatory compliance, and customer documentation.</p>
+            
+            <p>Typical production begins with receiving pig iron, steel scrap, return scrap, aluminum ingots, ferroalloys, 
+                and alloying additions before progressing through charge preparation, induction or cupola furnace melting,
+                 melt chemistry adjustment, slag removal, inoculation or degassing where applicable, mold preparation, pouring, 
+                 cooling, shakeout, fettling, shot blasting, heat treatment, machining, dimensional inspection, non-destructive
+                  testing (NDT), warehouse storage, and customer shipment.</p>
+
+            <p>Traditional paper travelers, manual barcode recording, spreadsheets, and handwritten production logs often make 
+                it difficult to determine the real-time location of production assets, personnel, or heat lots.
+                 As production volumes increase, these limitations can affect production scheduling, inventory accuracy, 
+                 tooling utilization, and quality investigations.</p>
+
+            <p>FoundryCast AI addresses these challenges by combining AI with industrial Internet of Things (IoT) identification
+                 technologies to create reliable digital identification throughout casting operations. AI 
+                 and IoT integrates AI with RFID identification, Bluetooth Low Energy (BLE), LoRaWAN connectivity, GPS yard 
+                 location technologies, edge computing, industrial communication networks, and enterprise manufacturing 
+                 software. The objective is not environmental sensing but accurate identification, location awareness, 
+                 and production traceability across the entire manufacturing lifecycle.</p>
+
+            <p>Rather than providing generic manufacturing software, FoundryCast AI is engineered specifically for metal casting environments, including iron foundries, steel foundries, aluminum foundries, investment casting facilities, permanent mold casting operations, high-pressure die casting plants, gravity die casting, shell molding, and precision casting manufacturers. The result is greater operational visibility, improved furnace workforce accountability, enhanced tooling utilization, accurate alloy inventory management, digital casting genealogy, and complete heat lot traceability from raw material receiving through final shipment.</p>
+        </div>
+    </section>
+
+    <!-- Block Diagram Section -->
+    <section>
+        <div class="container">
+            <h2>AIoT-Enabled Foundry Enterprise Block Diagram for RFID Identification and Production Genealogy</h2>
+            <p>This engineering block diagram illustrates how RFID, BLE, LoRaWAN, Industrial Ethernet, edge computing, OPC UA, 
+                and MQTT connect physical foundry assets with enterprise software platforms. It demonstrates end-to-end 
+                identification, production genealogy, enterprise data flow, and AI-driven analytics across MES, ERP, WMS, QMS,
+                CMMS, warehouse operations, and executive dashboards.</p>
+
+            <div class="diagram-container">
+                <img src="Ai_Foundry_RFID-img.webp" alt="Ai_Foundry_RFID-img.webp">
+            </div>
+                
+        </div>
+    </section>
+        
+    
+
+    <!-- Why AI and IoT Section -->
+    <section>
+        <div class="container">
+            <h2>Why AI and IoT Matters in Foundries & Casting</h2>
+            <p>Metal casting operations involve thousands of reusable production assets and continuously moving production batches. Patterns, molds, flasks, ladles, crucibles, chill plates, fixtures, pallets, alloy containers, and finished castings frequently move among molding lines, furnace areas, pouring stations, cooling zones, machining departments, inspection laboratories, warehouses, and shipping docks. Manual tracking often results in production delays when assets cannot be located quickly or production records require extensive reconciliation.</p>
+
+            <p>AI and IoT enables automated identification throughout these workflows by associating unique digital identities with workers, production equipment, tooling, and castings. Industrial RFID supports reliable identification of metal production assets using specialized on-metal and high-temperature RFID tags engineered for harsh foundry environments. BLE wearable devices improve workforce accountability around induction furnaces, cupola furnaces, electric arc furnace support areas, pouring stations, and maintenance zones. LoRaWAN provides long-range communication across large industrial campuses, while GPS assists with locating outdoor inventory, returnable containers, and scrap storage areas.</p>
+
+            <p>Identification events are processed locally through edge computing devices before securely synchronizing with Manufacturing Execution Systems (MES), Enterprise Resource Planning (ERP) software, Warehouse Management Systems (WMS), Quality Management Systems (QMS), and Computerized Maintenance Management Systems (CMMS). Standard industrial communication protocols such as OPC UA, MQTT, Modbus TCP, and REST APIs support reliable interoperability with existing production software while minimizing disruption to established workflows.</p>
+        </div>
+    </section>
+
+    <!-- Operational Challenges Section -->
+    <section>
+        <div class="container">
+            <h2>Operational Challenges Addressed</h2>
+            <p>Modern foundries continue to increase automation while facing greater demands for quality assurance, traceability, workforce safety, inventory accuracy, and production efficiency. Identification gaps frequently occur because production assets are exposed to elevated temperatures, abrasive materials, heavy equipment movement, and complex routing between manufacturing departments.</p>
+
+            <ul class="bullet-list">
+                <li>Restricted access to furnace, pouring, and molten metal handling areas</li>
+                <li>Limited visibility of furnace crew locations during production shifts</li>
+                <li>Difficulty locating molds, patterns, flasks, and reusable tooling</li>
+                <li>Ladle and crucible utilization Tracking</li>
+                <li>Alloy inventory reconciliation</li>
+                <li>Scrap segregation and return scrap management</li>
+                <li>Production batch identification</li>
+                <li>Casting work-in-progress visibility</li>
+                <li>Heat number association throughout manufacturing</li>
+                <li>Production genealogy documentation</li>
+                <li>Material certification management</li>
+                <li>Dimensional inspection record association</li>
+                <li>NDT documentation linkage</li>
+                <li>Warehouse inventory accuracy</li>
+                <li>Outdoor yard inventory management</li>
+                <li>Shipping verification</li>
+                <li>MES and ERP data consistency</li>
+                <li>Regulatory and customer documentation readiness</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- AI Functions Section -->
+    <section id="applications">
+        <div class="container">
+            <h2>AI Functions for AIoT-Enabled Foundries & Casting Operations</h2>
+            
+            <h3>Workforce & Furnace Safety System</h3>
+            <p>Personnel safety is a top priority in melting, pouring, and molten metal handling operations. Furnace operators, maintenance technicians, crane operators, refractory specialists, mold technicians, and quality personnel frequently move between controlled work zones where access authorization and personnel accountability are essential.</p>
+
+            <h4>Furnace Crew Location Analytics</h4>
+            <ul class="bullet-list">
+                <li>Improved workforce accountability</li>
+                <li>Faster personnel verification</li>
+                <li>Digital shift records</li>
+                <li>Reduced manual attendance documentation</li>
+                <li>Improved emergency response coordination</li>
+                <li>Historical workforce movement analysis</li>
+            </ul>
+
+            <h4>Melt Shop Access Analytics</h4>
+            <p>Typical controlled areas include:</p>
+            <ul class="bullet-list">
+                <li>Furnace rooms</li>
+                <li>Charge preparation</li>
+                <li>Molten metal transfer routes</li>
+                <li>Ladle maintenance stations</li>
+                <li>Refractory workshops</li>
+                <li>Metallurgical laboratories</li>
+                <li>Maintenance workshops</li>
+                <li>Control rooms</li>
+            </ul>
+
+            <h3>Tooling, Asset & Inventory Analytics</h3>
+            <p>Industrial RFID enables continuous identification of patterns, match plates, core boxes, mold assemblies, flasks, chill plates, fixtures, production pallets, and maintenance tooling.</p>
+
+            <h4>Alloy Inventory Forecasting</h4>
+            <p>Foundries manage diverse charge materials including:</p>
+            <ul class="bullet-list">
+                <li>Pig iron</li>
+                <li>Steel scrap</li>
+                <li>Return scrap</li>
+                <li>Aluminum ingots</li>
+                <li>Ferroalloys</li>
+                <li>Nickel additions</li>
+                <li>Chromium additions</li>
+                <li>Silicon alloys</li>
+                <li>Magnesium treatments</li>
+                <li>Inoculants</li>
+                <li>Flux materials</li>
+            </ul>
+
+            <h3>Casting Production Analytics</h3>
+            <p>Each production batch progresses through: Charge preparation, Furnace melting, Melt chemistry verification, Spectrometer analysis, Pouring, Mold cooling, Shakeout, Fettling, Shot blasting, Heat treatment, Machining, Inspection, Packaging, Warehouse storage, and Shipping.</p>
+        </div>
+    </section>
+
+    <!-- IoT Software Section -->
+    <section>
+        <div class="container">
+            <h2>IoT Software for AIoT-Enabled Foundries & Casting Facilities</h2>
+            
+            <h3>Workforce Identification Software</h3>
+            <ul class="bullet-list">
+                <li>Wearable worker credential management</li>
+                <li>Furnace area access control</li>
+                <li>Shift attendance management</li>
+                <li>Emergency muster management</li>
+                <li>Contractor identification</li>
+                <li>Visitor authorization</li>
+                <li>Department assignment</li>
+                <li>Qualification verification</li>
+                <li>Workforce reporting</li>
+                <li>Historical identification records</li>
+            </ul>
+
+            <h3>Tooling & Inventory Software</h3>
+            <ul class="bullet-list">
+                <li>Pattern asset management</li>
+                <li>Match plate management</li>
+                <li>Core box identification</li>
+                <li>Mold asset management</li>
+                <li>Flask tracking</li>
+                <li>Ladle identification</li>
+                <li>Crucible management</li>
+                <li>Raw material inventory collection</li>
+                <li>Alloy inventory management</li>
+                <li>Scrap inventory management</li>
+                <li>Finished casting inventory software</li>
+                <li>Warehouse pallet identification</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Integration & Workflow Section -->
+    <section>
+        <div class="container">
+            <h2>AIoT-Enabled Foundry Workflow for End-to-End Identification and Production Genealogy</h2>
+            <p>This workflow diagram illustrates complete identification and production genealogy across the foundry manufacturing lifecycle, from raw material receiving to shipping.</p>
+
+            <div class="workflow-steps">
+                <div class="step-card"><span>Step 1</span> Raw Material Receiving</div>
+                <div class="step-card"><span>Step 2</span> Scrap Segregation</div>
+                <div class="step-card"><span>Step 3</span> Alloy Storage</div>
+                <div class="step-card"><span>Step 4</span> Charge Assembly</div>
+                <div class="step-card"><span>Step 5</span> Induction Furnace Melting</div>
+                <div class="step-card"><span>Step 6</span> Spectrometer Verification</div>
+                <div class="step-card"><span>Step 7</span> Ladle Preparation</div>
+                <div class="step-card"><span>Step 8</span> Mold Preparation</div>
+                <div class="step-card"><span>Step 9</span> Pouring</div>
+                <div class="step-card"><span>Step 10</span> Cooling Solidification</div>
+                <div class="step-card"><span>Step 11</span> Shakeout</div>
+                <div class="step-card"><span>Step 12</span> Fettling</div>
+                <div class="step-card"><span>Step 13</span> Shot Blasting</div>
+                <div class="step-card"><span>Step 14</span> Machining</div>
+                <div class="step-card"><span>Step 15</span> Dimensional Inspection</div>
+                <div class="step-card"><span>Step 16</span> NDT Laboratory</div>
+                <div class="step-card"><span>Step 17</span> Warehouse Storage</div>
+                <div class="step-card"><span>Step 18</span> Shipping</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose & Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Why Choose FoundryCast AI</h2>
+            <p>FoundryCast AI was developed using practical experience gained from industrial AI and IoT deployments across manufacturing environments where reliable identification, production traceability, and enterprise integration are critical to operational success. Created within Aperture Venture Studio with support from GAO, FoundryCast AI builds upon more than two decades of IoT experience serving thousands of customers and successfully delivering thousands of IoT projects across industrial sectors, including the Primary Metals Industry.</p>
+
+            <h3>Contact FoundryCast AI</h3>
+            <p>Our engineering specialists collaborate with manufacturing organizations to evaluate production workflows, identify appropriate identification technologies, define phased implementation strategies, and integrate AI and IoT software with existing enterprise systems.</p>
+            
+            <ul class="bullet-list">
+                <li>AI and IoT solution planning</li>
+                <li>Industrial RFID deployment strategy</li>
+                <li>High-temperature RFID tag selection</li>
+                <li>Workforce identification system design</li>
+                <li>Furnace access control planning</li>
+                <li>Mold and tooling identification</li>
+                <li>Pattern and flask tracking</li>
+                <li>Ladle and crucible management</li>
+                <li>Alloy inventory optimization</li>
+                <li>Scrap inventory reconciliation</li>
+                <li>Production genealogy implementation</li>
+                <li>Heat lot traceability</li>
+                <li>Casting work-in-progress visibility</li>
+                <li>MES integration</li>
+                <li>ERP synchronization</li>
+                <li>Warehouse identification</li>
+                <li>Industrial edge computing</li>
+                <li>Enterprise software integration</li>
+                <li>Engineering consulting</li>
+                <li>Deployment planning and optimization</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FoundryCast AI</h4>
+                    <p style="font-size: 0.85rem;">AIoT-based people tracking, access control, asset tracking, inventory control, work-in-progress, and traceability for the Foundries & Casting industry.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#applications">Foundry & Casting Applications</a></li>
+                        <li><a href="#knowledge">Foundries & Casting Knowledge Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">IoT Hardware Technologies</a></li>
+                        <li><a href="#">IoT Software Facilities</a></li>
+                        <li><a href="#">AI Functions for Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Location</h4>
+                    <div class="map-block">
+                        <strong>FoundryCast AI</strong><br>
+                        369 Pine Street<br>
+                        San Francisco, CA 94104<br><br>
+                        <small>[Map Data ©2026 Google]</small>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                FoundryCast AI | All rights reserved
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
